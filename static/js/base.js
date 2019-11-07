@@ -276,41 +276,40 @@ function Base() {
             '我们听过无数的道理，却仍旧过不好这一生。',
             '生如夏花之绚烂，死如秋叶之静美。',
             '但凡不能杀死你的，最终都会使你更强大。',
-            '好看的皮囊千篇一律，有趣的灵魂万里挑一。',
             '青春是一本太仓促的书，我们含着泪，一读再读。',
-            '教育就是当一个人把在学校所学全部忘光之后剩下的东西。',
+            '或许前路永夜，即便如此我也要前进，因为星光即使微弱也会为我照亮前途。',
             '孤独不是一种脾性，而是一种无奈。',
             '有时候你以为天要塌下来了，其实是自己站歪了。',
-            '温柔正确的人总是难以生存，因为这世界既不温柔，也不正确。',
-            '死并非生的对立面，而作为生的一部分永存。',
-            '不要努力成为一个成功者，要努力成为一个有价值的人。',
+            '我想成为一个温柔的人,因为曾被温柔的人那样对待,深深了解那种被温柔相待的感觉。',
+            '在你不喜欢自己的时候，让我喜欢你吧。',
+            '你的心，是我去到世界尽头，也想回来的地方。',
             '不要因为走得太远，忘了我们为什么出发。',
-            '你的问题主要在于读书不多而想得太多。',
+            '因为等待的越久，重逢时就越幸福啊。',
             '岁月不饶人，我亦未曾饶过岁月。',
-            '当你凝视深渊时，深渊也在凝视着你。',
-            '有的人25岁就死了，只是到75岁才埋葬'
+            '其实从头到尾，被挫骨扬灰，灰飞烟灭的，只有温情一人。',
+            '那种亲密的人突然陌生，希望完全落空的感觉，就好像喝口凉水居然被烫到。'
         ];
 
         // ===================  ONE . 每日一句  =================================
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://api.hibai.cn/api/index/index",
-            "method": "POST",
-            "headers": {
+            "url": "https://v1.hitokoto.cn/",
+            "method": "GET",
+            /*"headers": {
                 "content-type": "application/x-www-form-urlencoded",
             },
             "data": {
-                "TransCode": "030111",
-                "OpenId": "123456789",
-                "Body": ""
-            }
+                //"TransCode": "030111",
+                //"OpenId": "123456789",
+                //"Body": ""
+            }*/
         };
         
         $.ajax(settings).done(function (response) {
             if (response.ResultCode == 1) {
-                $('#hitokoto').text(response.Body.word).css('display', '-webkit-box');
-                $('#hitokotoAuthor').text('- '+response.Body.word_from).show();
+                $('#hitokoto').text(response.hitokoto).css('display', '-webkit-box');
+                $('#hitokotoAuthor').text('- '+response.from).show();
             } else {
                 var listIndex = tools.randomNum(0, topTitleList.length - 1);
                 $('#hitokoto').text(topTitleList[listIndex]).css('display', '-webkit-box');
